@@ -35,6 +35,10 @@ public class Player {
         return name;
     }
 
+    /**
+     * The setName function sets string value to attribute name of class Player
+     * @param name sets name to name attribute
+     * */
     public void setName(String name) {
         this.name = name;
     }
@@ -46,6 +50,10 @@ public class Player {
         return ID;
     }
 
+    /**
+     * The setID function sets string value to attribute ID of class Player
+     * @param ID sets ID to ID attribute
+     * */
     public void setID(String ID) {
         this.ID = ID;
     }
@@ -57,6 +65,10 @@ public class Player {
         return password;
     }
 
+    /**
+     * The setPassword function sets string value to attribute Password of class Player
+     * @param password sets password to password attribute
+     * */
     public void setPassword(String password) {
         this.password = password;
     }
@@ -68,38 +80,55 @@ public class Player {
         return phone;
     }
 
+    /**
+     * The setPhone function sets string value to attribute phone of class Player
+     * @param phone sets string phone number to phone attribute
+     * */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
     /**
-     * The getPlayground method returns players location
-     * @return returns instance of Playgrounds*/
+     * The getLocation method returns players location
+     * @return returns string location of player*/
     public String getLocation() {
         return location;
     }
 
+    /**
+     * The setLocation function sets string value to attribute location of class Player
+     * @param location sets player location to string location attribute
+     * */
     public void setLocation(String location) {
         this.location = location;
     }
 
     /**
-     * The getPlayground method returns object of type Playgrounds
+     * The getBooking method returns object of type Playgrounds
      * @return returns instance of Playgrounds*/
     public Playgrounds getBooking() {
         return booking;
     }
 
+    /**
+     * The setBooking function sets object of type Playground to object booking of class Player
+     * @param booking sets booking object of type Playground to booking object
+     * */
     public void setBooking(Playgrounds booking){
         this.booking=booking;
     }
 
     ////////////////// Methods //////////////////
+    /**
+     * function to display player bookings of playground objects*/
     public void displayBookings(){
         System.out.println("Bookings Details: ");
         System.out.println(booking.toString());
     }
 
+    /**
+     * Overriding toString method to
+     * @return data as a string in a certain way */
     @Override
     public String toString () {
         String playerData="******************************************\nPlayer name: "+name+"\nPlayer phone: "+phone+

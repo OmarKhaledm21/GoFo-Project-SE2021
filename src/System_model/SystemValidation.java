@@ -150,8 +150,7 @@ public class SystemValidation {
     }
 
     /**
-     * Overriding toString method to
-     * @return data as a string in a certain way */
+     * function that displays playgrounds stored in system instance */
     public void displayPlaygrounds(){
         if(playgroundsData.size()==0){
             System.out.println("No playgrounds are registered in the system!");
