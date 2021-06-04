@@ -30,9 +30,9 @@ public class Main {
                         username = input.next();
                         password = input.next();
                         Player player = sys_ver.playerValidation(username,password);
-                        System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- Exit");
+                        System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- eWaller Menu\n5- Exit");
                         sub_choice= input.nextInt();
-                        while (sub_choice!=4) {
+                        while (sub_choice!=5) {
                             switch (sub_choice){
                                 case 1:
                                     sys_ver.displayPlaygrounds();
@@ -50,12 +50,15 @@ public class Main {
                                     }
                                     break;
                                 case 4:
+                                    player.init_eWallet();
+                                    break;
+                                case 5:
                                     break;
                                 default:
                                     System.out.println("Invalid choice!");
                                     break;
                             }
-                            System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- Exit");
+                            System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- eWallet Menu\n5- Exit");
                             sub_choice= input.nextInt();
                         }
                     }
@@ -113,9 +116,9 @@ public class Main {
                     phone = input.next();
                     location = input.next();
                     Player player1 = sys_ver.registerPlayer(name,ID,reg_password,phone,location);
-                    System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- Exit");
+                    System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- eWallet Menu\n5- Exit");
                     sub_choice= input.nextInt();
-                    while (sub_choice!=4) {
+                    while (sub_choice!=5) {
                         switch (sub_choice){
                             case 1:
                                 sys_ver.displayPlaygrounds();
@@ -129,12 +132,15 @@ public class Main {
                                 player1.displayBookings();
                                 break;
                             case 4:
+                                player1.init_eWallet();
+                                break;
+                            case 5:
                                 break;
                             default:
                                 System.out.println("Invalid choice!");
                                 break;
                         }
-                        System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- Exit");
+                        System.out.println("\n1- Display available playgrounds\n2- Book a playground\n3- View bookings\n4- eWallet Menu\n5- Exit");
                         sub_choice= input.nextInt();
                     }
                     break;
@@ -165,7 +171,12 @@ public class Main {
                                 sys_ver.registerPlayground(playgroundOwner1,playgroundName,playgroundLocation,playgroundSize,validTimes,price);
                                 break;
                             case 2:
-                                playgroundOwner1.displayOwnedPlaygrounds();
+                                int playgrounds_count = playgroundOwner1.getOwnedPlaygrounds().size();
+                                if(playgrounds_count==0){
+                                    System.out.println("You have not registered any playgrounds yet");
+                                }else {
+                                    playgroundOwner1.displayOwnedPlaygrounds();
+                                }
                                 break;
                             case 3:
                                 break;

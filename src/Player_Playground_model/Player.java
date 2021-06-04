@@ -1,5 +1,9 @@
 package Player_Playground_model;
 
+import System_model.eWallet;
+
+import java.util.Scanner;
+
 public class Player {
     ////////////////// Attributes ///////////////////
     protected String name;
@@ -8,7 +12,7 @@ public class Player {
     protected String phone;
     protected String location;
     private Playgrounds booking;
-
+    private eWallet wallet;
     ////////////////// Constructors //////////////////
     /**
      * Parametrized Constructor in case the object is supplied with object data at creation
@@ -25,6 +29,7 @@ public class Player {
         this.phone=phone;
         this.location=location;
         booking=null;
+        wallet=new eWallet(this);
     }
 
     ////////////////// Setters and Getters //////////////////
@@ -115,15 +120,57 @@ public class Player {
      * @param booking sets booking object of type Playground to booking object
      * */
     public void setBooking(Playgrounds booking){
-        this.booking=booking;
+        boolean booking_status = wallet.makePayment(booking.getPrice());
+        if(booking_status){
+            this.booking=booking;
+        }
     }
 
     ////////////////// Methods //////////////////
     /**
+     * This function is intended to initialize wallet whenver the player wants to start
+     * making payments and he can withdraw or depost money and also show his balance*/
+    public void init_eWallet(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("\neWaller Menu\n1) Deposit\n2) Withdraw\n3) Show balance\n4) Exit");
+        wallet.displayBalance();
+
+        int choice=input.nextInt();
+
+        while(choice!=4) {
+            switch (choice) {
+                case 1:
+                    System.out.println("Please enter the balance you want to deposit: ");
+                    double dep = input.nextDouble();
+                    wallet.deposit(dep);
+                    break;
+                case 2:
+                    System.out.println("Please enter the balance you want withdraw: ");
+                    double wit = input.nextDouble();
+                    wallet.withdraw(wit);
+                    break;
+                case 3:
+                    wallet.displayBalance();
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+            System.out.println("\neWaller Menu\n1) Deposit\n2) Withdraw\n3) Show balance\n4) Exit\n");
+            choice= input.nextInt();
+        }
+    }
+    /**
      * function to display player bookings of playground objects*/
     public void displayBookings(){
-        System.out.println("Bookings Details: ");
-        System.out.println(booking.toString());
+        if(booking!=null) {
+            System.out.println("Bookings Details: ");
+            System.out.println(booking.toString());
+        }else{
+            System.out.println("No bookings available!");
+        }
     }
 
     /**
@@ -132,7 +179,7 @@ public class Player {
     @Override
     public String toString () {
         String playerData="******************************************\nPlayer name: "+name+"\nPlayer phone: "+phone+
-                "\nPlayer phone: "+phone+"\nPlayer location: "+location;
+                "\nPlayer location: "+location;
         return playerData;
     }
 }
