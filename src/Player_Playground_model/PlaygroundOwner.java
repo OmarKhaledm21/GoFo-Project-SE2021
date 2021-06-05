@@ -7,11 +7,13 @@ import java.util.Scanner;
 
 public class PlaygroundOwner extends Player{
     ////////////////// Attributes ///////////////////
+
     /**
      * @param ownedPlaygrounds, an array list that holds the ownedPlaygrounds of the Owner.
      */
     private ArrayList<Playgrounds>ownedPlaygrounds;
     ////////////////// Constructors //////////////////
+
     /***
      *
      * @param name name of the playgroundOwner
@@ -25,11 +27,12 @@ public class PlaygroundOwner extends Player{
         ownedPlaygrounds = new ArrayList<Playgrounds>();
     }
 
-    /***
-     *
-     * @return Playgrounds arraylist
-     */
+
     ////////////////// Setters and Getters //////////////////
+    /***
+         *
+         * @return Playgrounds arraylist
+         */
     public ArrayList<Playgrounds> getOwnedPlaygrounds() {
         return ownedPlaygrounds;
     }
@@ -43,6 +46,7 @@ public class PlaygroundOwner extends Player{
     }
 
     ////////////////// Methods //////////////////
+
     public void displayOwnedPlaygrounds(){
         System.out.println("********************************************\nowned playgrounds are: ");
         for(int i=0; i<ownedPlaygrounds.size(); i++){
